@@ -1,0 +1,23 @@
+body {
+    background-color: rgba(7, 7, 7, 0.75) !important;
+}
+
+p, h1 {
+    color: red; !important;
+}
+
+#foo {
+    color: red; !important;
+}
+
+.margin-right {
+    margin-right: 0px;
+}
+
+img {
+    opacity: 0.5;
+}
+
+img:hover {
+    opacity: 1.0;
+}

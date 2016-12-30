@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+    <title>KSY semestral project</title>
+
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/imageBorder.css}" />
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/utils.css}" />
+    <link href="webjars/bootstrap/3.3.7-1/css/bootstrap.min.css" rel="stylesheet" media="screen"> </link>
+</head>
+<body>
+
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+                <h1 id="foo" class="text-center">Select test</h1>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+                <a class="center-block text-center" th:href="@{/digitSpan}"><img th:src="@{/images/digitSpan.JPG}"/></a>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+                <a class="center-block text-center" th:href="@{/doubleTrouble}"><img th:src="@{/images/doubleTrouble.JPG}"/></a>
+            </div>
+        </div>
+
+
+    <script src="http://code.jquery.com/jquery.js"></script>
+    <script src="webjars/bootstrap/3.3.7-1/js/bootstrap.min.js"></script>
+</body>
+</html>

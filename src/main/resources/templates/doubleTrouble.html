@@ -1,0 +1,144 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Double Trouble</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/utils.css}" />
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/doubleTrouble.css}" />
+    <link href="webjars/bootstrap/3.3.7-1/css/bootstrap.min.css" rel="stylesheet" media="screen"> </link>
+</head>
+<body>
+<div id="menu">
+    <a th:href="@{/home}"><span class="glyphicon glyphicon-home pull-left"></span></a>
+    <a th:href="@{/doubleTrouble}"><span class="glyphicon glyphicon-repeat pull-right"></span></a>
+</div>
+<div id="lifes"></div>
+<div id="digit"></div>
+<div id="score"></div>
+<div id="countdown"></div>
+
+<script src="http://code.jquery.com/jquery.js"></script>
+<script src="webjars/bootstrap/3.3.7-1/js/bootstrap.min.js"></script>
+<script th:inline="javascript">
+    /*<![CDATA[*/
+    var answer = true;
+    var score = 0;
+    var count = 90;
+    var tick = 0;
+    setInterval(function() {
+        if (answer) {
+            var top;
+            answer = false;
+            document.getElementById("score").innerHTML = "Score: " + score;
+            var topInk = Math.floor(Math.random() * 3); // 0 orange // 1 pink // 2 purple
+            var topValue = Math.floor(Math.random() * 3); // 0 orange // 1 pink // 2 purple
+            var buttonContainer = document.getElementById("digit");
+            if (topValue === 0) {
+                top = document.getElementById("lifes").innerHTML = "orange";
+            } else if (topValue === 1) {
+                top = document.getElementById("lifes").innerHTML = "pink";
+            } else if (topValue === 2) {
+                top = document.getElementById("lifes").innerHTML = "purple";
+            }
+
+            if (topInk === 0) {
+                document.getElementById("lifes").style.color = 'orange';
+            } else if (topInk === 1) {
+                document.getElementById("lifes").style.color = 'pink';
+            } else if (topInk === 2) {
+                document.getElementById("lifes").style.color = 'purple';
+            }
+
+            var botInk = Math.floor(Math.random() * 3); // 0 orange // 1 pink // 2 purple
+            var botValue = Math.floor(Math.random() * 3); // 0 orange // 1 pink // 2 purple
+            var newButton = document.createElement('digit');
+            newButton.type = 'button';
+            newButton.value = botValue;
+            newButton.id = "0";
+
+            newButton.onclick = function () {
+                alert('You pressed ' + this.id);
+            };
+            buttonContainer.appendChild(newButton);
+            if (botInk === 0) {
+                document.getElementById("0").style.color = 'orange';
+            } else if (botInk === 1) {
+                document.getElementById("0").style.color = 'pink';
+            } else if (botInk === 2) {
+                document.getElementById("0").style.color = 'purple';
+            }
+
+            var i, buttonContainer, newButton;
+            var winner = Math.floor(Math.random() * 3);
+            winner++;
+            buttonContainer = document.getElementById('digit');
+            for (i = 0; i < 4; i++) {
+                var botInk = Math.floor(Math.random() * 3); // 0 orange // 1 pink // 2 purple
+                var botValue = Math.floor(Math.random() * 3); // 0 orange // 1 pink // 2 purple
+                if (winner === i) {
+                   botValue = topInk;
+                } else {
+                    while (botValue === topInk) {
+                        botValue = Math.floor(Math.random() * 3);
+                    }
+                }
+                newButton = document.createElement('input');
+                newButton.type = 'button';
+
+                if (botValue === 0) {
+                    newButton.value = "orange";
+                } else if (botValue === 1) {
+                    newButton.value = "pink";
+                } else if (botValue === 2) {
+                    newButton.value = "purple";
+                }
+
+                newButton.id = i;
+                newButton.onclick = function () {
+                    if (this.id == winner) {
+                        score++;
+                    } else {
+                        score--;
+                    }
+                    answer = true;
+                    document.getElementById("digit").innerHTML = "";
+                };
+
+                if (i !== 0) {
+                    buttonContainer.appendChild(newButton);
+
+                    if (botInk === 0) {
+                        document.getElementById(i).style.backgroundColor = "rgba(7, 7, 7, 0.75)";
+                        document.getElementById(i).style.color = "orange";
+                    } else if (botInk === 1) {
+                        document.getElementById(i).style.backgroundColor = "rgba(7, 7, 7, 0.75)";
+                        document.getElementById(i).style.color = "pink";
+                    } else if (botInk === 2) {
+                        document.getElementById(i).style.backgroundColor = "rgba(7, 7, 7, 0.75)";
+                        document.getElementById(i).style.color = "purple";
+                    }
+                }
+
+                console.log(winner + " " + score);
+            }
+        }
+        tick++;
+        if (tick === 10) {
+            tick = 0;
+            if (count !== 0) {
+                document.getElementById("countdown").innerHTML = count + " seconds left";
+                count--;
+            } else {
+                document.getElementById("countdown").innerHTML = "";
+                document.getElementById("digit").innerHTML = "";
+                document.getElementById("lifes").innerHTML = "";
+                document.getElementById("score").innerHTML = "Your final score is: " + score;
+            }
+        }
+    }, 100);
+    /*]]>*/
+</script>
+
+</body>
+
+</html>

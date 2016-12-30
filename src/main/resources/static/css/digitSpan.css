@@ -1,0 +1,54 @@
+#digit {
+    width: 300px;
+    height: 300px;
+
+    position: absolute;
+    top: 200px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    margin: auto;
+
+    border-size:2px;
+    border-style:solid;
+    border-color: #38659a;
+
+    color: #1deeff;
+    font-size: 3.2em;
+    text-align: center;
+}
+
+#lifes {
+    width: 300px;
+    height: 100px;
+
+    position: absolute;
+    top:-200px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    margin: auto;
+
+    color: #1deeff;
+    font-size: 3.2em;
+    text-align: center;
+}
+
+#menu {
+    width: 300px;
+    height: 100px;
+
+    position: absolute;
+    top:-400px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    margin: auto;
+
+    color: #ff0024; !important;
+    font-size: 5.2em;
+    text-align: center;
+}

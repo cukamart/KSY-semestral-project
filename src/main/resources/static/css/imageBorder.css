@@ -1,0 +1,6 @@
+img {
+    border: solid 5px transparent;
+}
+img:hover {
+    border-color: red;
+}
